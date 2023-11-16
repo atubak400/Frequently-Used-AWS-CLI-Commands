@@ -12,6 +12,36 @@ aws ec2 run-instances \
   --count 1
 ```
 
+For example
+
+```
+aws ec2 run-instances \
+  --image-id ami-0bf8a8d2bb7451690 \
+  --instance-type t2.micro \
+  --key-name kube \
+  --subnet-id subnet-06b78b95680f4591a \
+  --security-group-ids sg-0024933c304adf75a \
+  --count 1
+```
+
+## List EC2 Instances
+
+```
+aws ec2 describe-instances
+```
+
+For a more concise output
+
+```
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId, ImageId, InstanceType, KeyName, PublicIpAddress, PrivateIpAddress, SubnetId]' --output table
+```
+
+## Terminate EC2 Instances
+
+```
+aws ec2 terminate-instances --instance-ids i-02794c0afd249fb2b i-02a9bf229dd3a2e49
+```
+
 ## find 10 AWS AMI images in us-east-1
 
 ```
