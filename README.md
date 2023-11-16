@@ -24,11 +24,17 @@ aws ec2 run-instances \
   --count 1
 ```
 
+![create ec2](./img/1.png)
+
+![create ec2](./img/5.png)
+
 ## List EC2 Instances
 
 ```
 aws ec2 describe-instances
 ```
+
+![list ec2](./img/2.png)
 
 For a more concise output
 
@@ -36,11 +42,15 @@ For a more concise output
 aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId, ImageId, InstanceType, KeyName, PublicIpAddress, PrivateIpAddress, SubnetId]' --output table
 ```
 
+![list ec2](./img/4.png)
+
 ## Terminate EC2 Instances
 
 ```
 aws ec2 terminate-instances --instance-ids i-02794c0afd249fb2b i-02a9bf229dd3a2e49
 ```
+
+![terminate ec2](./img/6.png)
 
 ## find 10 AWS AMI images in us-east-1
 
@@ -52,7 +62,9 @@ aws ec2 describe-images \
   --query 'Images[*].[ImageId, Name, Region]' \
   --max-items 10 \
   --output table
-  ```
+```
+
+![list ec2](./img/3.png)
 
 ## List Key pairs
 
@@ -90,8 +102,8 @@ aws ec2 describe-security-groups
 aws ec2 create-security-group --group-name YourSecurityGroupName --description "Your Security Group Description" --vpc-id YourVPCID
 ```
 
-* Add inbound rules
+- Add inbound rules
+
 ```
 aws ec2 authorize-security-group-ingress --group-id YourSecurityGroupId --protocol tcp --port 22 --cidr YourIPAddress/32
 ```
-
